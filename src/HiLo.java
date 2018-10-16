@@ -7,18 +7,24 @@ public class HiLo {
 		String playAgain = "";
 		do {
 			// Create a random number for the user to guess
-			int theNumber = (int)(Math.random()* 100 + 1);
+			// make range -100 to 100
+			int theNumber = (int)(Math.random()* 200 + 1)-100;
+			System.out.println(theNumber);
 			int guess = 0;
+			int numberOfTries = 0;
+			
 			while (guess != theNumber) {
-				System.out.println("Guess a number between 1 and 100: ");
+				System.out.println("Guess a number between -100 and 100: ");
 				guess = scan.nextInt();
-
-				if (guess < theNumber)
+				numberOfTries = numberOfTries + 1;
+				if (guess < theNumber) {
 					System.out.println(guess + " is too low. Try again.");
-				else if (guess > theNumber)
+				} else if (guess > theNumber) {
 					System.out.println(guess + " is too high. Try again.");
-				else
+				} else {
 					System.out.println(guess + " is correct. You win!");
+					System.out.println("It took you " + numberOfTries + " attempts to win.");
+				}
 			}
 			System.out.println("Would you like to play again (y/n)?");
 			playAgain = scan.next();
